@@ -1,0 +1,20 @@
+.grid-game {
+  display: grid;
+  width: 600px;
+  height: 600px;
+  border: 1px solid red;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0 auto;
+}
+
+.grid-game div {
+  border: 1px solid green;
+}
+
+.grid-game div.x {
+  background-color: blueviolet;
+}
+
+.grid-game div.circle {
+  background-color: rgb(168, 226, 43);
+}
