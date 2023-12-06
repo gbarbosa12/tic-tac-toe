@@ -1,20 +1,65 @@
 const squares = document.querySelectorAll(".grid-game div");
 let circleTrue = true;
 
-function circleOrX(element, classRespective) {
-  element.classList.add(classRespective);
+function alternandoPlayer() {
+  function circleOrX(element, classRespective) {
+    element.classList.add(classRespective);
+
+    // if (element.classList.contains(classRespective)) {
+    //   console.log("tem " + classRespective);
+    // }
+  }
+
+  const handleClick = (e) => {
+    element = e.target;
+
+    const classRespective = circleTrue ? "circle" : "x";
+
+    circleOrX(element, classRespective);
+
+    checkWin();
+
+    circleTrue = !circleTrue;
+  };
+
+  squares.forEach((square) => {
+    square.addEventListener("click", handleClick);
+  });
 }
 
-const handleClick = (e) => {
-  element = e.target;
+alternandoPlayer();
 
-  const classRespective = circleTrue ? "circle" : "x";
+// if (
+//   squares[0].classList.contains("circle") &&
+//   squares[0] == squares[1] &&
+//   squares[0] == squares[2]
+// ) {
+//   console.log("true");
+// } else {
+//   console.log("false");
+// }
 
-  circleOrX(element, classRespective);
+function checkWin() {
+  const possibleWinnings = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
 
-  circleTrue = !circleTrue;
-};
+  possibleWinnings.forEach((event) => {
+    const [a, b, c] = event;
 
-squares.forEach((square) => {
-  square.addEventListener("click", handleClick);
-});
+    if (
+      squares[a].className == squares[b].className &&
+      squares[a].className == squares[c].className &&
+      squares[a].className !== ""
+    ) {
+      console.log(squares[a].className + " venceu");
+    }
+  });
+}
