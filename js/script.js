@@ -1,43 +1,26 @@
 const squares = document.querySelectorAll(".grid-game div");
 let circleTrue = true;
 
-function alternandoPlayer() {
-  function circleOrX(element, classRespective) {
-    element.classList.add(classRespective);
-
-    // if (element.classList.contains(classRespective)) {
-    //   console.log("tem " + classRespective);
-    // }
-  }
-
-  const handleClick = (e) => {
-    element = e.target;
-
-    const classRespective = circleTrue ? "circle" : "x";
-
-    circleOrX(element, classRespective);
-
-    checkWin();
-
-    circleTrue = !circleTrue;
-  };
-
-  squares.forEach((square) => {
-    square.addEventListener("click", handleClick);
-  });
+function circleOrX(element, classRespective) {
+  element.classList.add(classRespective);
 }
 
-alternandoPlayer();
+const handleClick = (e) => {
+  element = e.target;
 
-// if (
-//   squares[0].classList.contains("circle") &&
-//   squares[0] == squares[1] &&
-//   squares[0] == squares[2]
-// ) {
-//   console.log("true");
-// } else {
-//   console.log("false");
-// }
+  const classRespective = circleTrue ? "circle" : "x";
+
+  circleOrX(element, classRespective);
+
+  checkWin();
+  checkDraw();
+
+  circleTrue = !circleTrue;
+};
+
+squares.forEach((square) => {
+  square.addEventListener("click", handleClick);
+});
 
 function checkWin() {
   const possibleWinnings = [
@@ -53,7 +36,6 @@ function checkWin() {
 
   possibleWinnings.forEach((event) => {
     const [a, b, c] = event;
-
     if (
       squares[a].className == squares[b].className &&
       squares[a].className == squares[c].className &&
@@ -64,10 +46,13 @@ function checkWin() {
   });
 }
 
-let todosComClasse = true
+function checkDraw() {
+  const newSquares = Array.from(squares);
+  const squares2 = newSquares.map((square) => {
+    return square.className;
+  });
 
-squares.forEach((square) => {
-  if (square.className !== 'circle') {
-    todosComClasse = false
+  if (!squares2.includes("")) {
+    console.log("empate");
   }
-})
+}
