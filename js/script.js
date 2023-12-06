@@ -63,3 +63,11 @@ function checkWin() {
     }
   });
 }
+
+let todosComClasse = true
+
+squares.forEach((square) => {
+  if (square.className !== 'circle') {
+    todosComClasse = false
+  }
+})
