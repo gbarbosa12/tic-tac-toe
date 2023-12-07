@@ -18,3 +18,30 @@
 .grid-game div.circle {
   background-color: rgb(168, 226, 43);
 }
+
+.modal-container {
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  display: flex;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container.ativo {
+  display: flex;
+}
+
+.modal {
+  background: #ffffff;
+  min-width: 300px;
+  padding: 40px;
+  border: 10px solid #fb5;
+  box-shadow: 0 0 0 10px #fff;
+  position: relative;
+}
