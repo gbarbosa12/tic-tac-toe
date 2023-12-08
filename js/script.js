@@ -1,7 +1,8 @@
 const squares = document.querySelectorAll(".grid-game div");
-let circleTrue = true;
+const resultAlert = document.querySelector('span')
 const botaoPlayAgain = document.querySelector("[data-modal='playAgain']");
 const containerModal = document.querySelector("[data-modal='container']");
+let circleTrue = true;
 
 function circleOrX(element, classRespective) {
   element.classList.add(classRespective);
@@ -44,6 +45,7 @@ function checkWin() {
       squares[a].className !== ""
     ) {
       containerModal.classList.add("ativo");
+      resultAlert.innerText = `${squares[a].className} venceu`
     }
   });
 }
@@ -55,7 +57,8 @@ function checkDraw() {
   });
 
   if (!squares2.includes("")) {
-    console.log("empate");
+    containerModal.classList.add("ativo");
+    resultAlert.innerText = 'Empate'
   }
 }
 
@@ -63,17 +66,16 @@ function initModal() {
   if (botaoPlayAgain && containerModal) {
     function toggleModal(event) {
       event.preventDefault();
-      containerModal.classList.toggle("ativo");
-    }
+      containerModal.classList.remove("ativo");
 
-    function clickForaModal(event) {
-      if (event.target === this) {
-        toggleModal(event);
-      }
+      squares.forEach((square) => {
+        square.removeAttribute('class');
+        circleTrue = true
+      })
     }
 
     botaoPlayAgain.addEventListener("click", toggleModal);
-    containerModal.addEventListener("click", clickForaModal);
+
   }
 }
 
