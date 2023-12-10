@@ -1,5 +1,5 @@
 const squares = document.querySelectorAll(".grid-game div");
-const resultAlert = document.querySelector('span')
+const resultAlert = document.querySelector("span");
 const botaoPlayAgain = document.querySelector("[data-modal='playAgain']");
 const containerModal = document.querySelector("[data-modal='container']");
 let circleTrue = true;
@@ -45,7 +45,7 @@ function checkWin() {
       squares[a].className !== ""
     ) {
       containerModal.classList.add("ativo");
-      resultAlert.innerText = `${squares[a].className} venceu`
+      resultAlert.innerText = `${squares[a].className} venceu`;
     }
   });
 }
@@ -58,7 +58,7 @@ function checkDraw() {
 
   if (!squares2.includes("")) {
     containerModal.classList.add("ativo");
-    resultAlert.innerText = 'Empate'
+    resultAlert.innerText = "Empate";
   }
 }
 
@@ -69,13 +69,12 @@ function initModal() {
       containerModal.classList.remove("ativo");
 
       squares.forEach((square) => {
-        square.removeAttribute('class');
-        circleTrue = true
-      })
+        square.removeAttribute("class");
+        circleTrue = true;
+      });
     }
 
     botaoPlayAgain.addEventListener("click", toggleModal);
-
   }
 }
 

@@ -1,22 +1,44 @@
 .grid-game {
   display: grid;
-  width: 600px;
-  height: 600px;
-  border: 1px solid red;
+  width: 500px;
+  height: 500px;
   grid-template-columns: 1fr 1fr 1fr;
-  margin: 0 auto;
+  margin: 4rem auto;
 }
 
 .grid-game div {
-  border: 1px solid green;
+  border: 9px solid rgb(0, 0, 0);
+  border-top: none;
+  border-left: none;
+  padding: 90px;
+}
+
+.grid-game div:nth-child(7),
+.grid-game div:nth-child(8),
+.grid-game div:nth-child(9) {
+  border-bottom: none;
+}
+
+.grid-game div:nth-child(3),
+.grid-game div:nth-child(6),
+.grid-game div:nth-child(9) {
+  border-right: none;
 }
 
 .grid-game div.x {
-  background-color: blueviolet;
+  background-image: url("../img/iconX.svg");
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
+  cursor: pointer;
 }
 
 .grid-game div.circle {
-  background-color: rgb(168, 226, 43);
+  background-image: url("../img/circle.svg");
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
+  cursor: pointer;
 }
 
 .modal-container {
