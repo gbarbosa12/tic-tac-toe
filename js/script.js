@@ -45,7 +45,7 @@ function checkWin() {
       squares[a].className !== ""
     ) {
       containerModal.classList.add("ativo");
-      resultAlert.innerText = `${squares[a].className} venceu`;
+      resultAlert.innerText = `${squares[a].className} won!!`;
     }
   });
 }
@@ -58,7 +58,7 @@ function checkDraw() {
 
   if (!squares2.includes("")) {
     containerModal.classList.add("ativo");
-    resultAlert.innerText = "Empate";
+    resultAlert.innerText = "Draw!";
   }
 }
 
