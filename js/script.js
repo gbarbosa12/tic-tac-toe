@@ -2,10 +2,15 @@ const squares = document.querySelectorAll(".grid-game div");
 const resultAlert = document.querySelector("span");
 const botaoPlayAgain = document.querySelector("[data-modal='playAgain']");
 const containerModal = document.querySelector("[data-modal='container']");
-let circleTrue = true;
+let circleTrue;
 
-function circleOrX(element, classRespective) {
-  element.classList.add(classRespective);
+function startGame() {
+  squares.forEach((square) => {
+    square.addEventListener("click", handleClick, { once: true });
+  });
+
+  circleTrue = true;
+  initModal();
 }
 
 const handleClick = (e) => {
@@ -17,13 +22,17 @@ const handleClick = (e) => {
 
   checkWin();
   checkDraw();
-
-  circleTrue = !circleTrue;
+  changePlayer();
+  // circleTrue = !circleTrue;
 };
 
-squares.forEach((square) => {
-  square.addEventListener("click", handleClick);
-});
+function changePlayer() {
+  circleTrue = !circleTrue;
+}
+
+function circleOrX(element, classRespective) {
+  element.classList.add(classRespective);
+}
 
 function checkWin() {
   const possibleWinnings = [
@@ -64,18 +73,16 @@ function checkDraw() {
 
 function initModal() {
   if (botaoPlayAgain && containerModal) {
-    function toggleModal(event) {
-      event.preventDefault();
-      containerModal.classList.remove("ativo");
+    event.preventDefault();
+    containerModal.classList.remove("ativo");
 
-      squares.forEach((square) => {
-        square.removeAttribute("class");
-        circleTrue = true;
-      });
-    }
-
-    botaoPlayAgain.addEventListener("click", toggleModal);
+    squares.forEach((square) => {
+      square.removeAttribute("class");
+      circleTrue = true;
+    });
   }
 }
 
-initModal();
+botaoPlayAgain.addEventListener("click", startGame);
+
+startGame();
