@@ -1,10 +1,8 @@
-/* Grid Jogo da Velha */
 body {
   background-color: #25dae5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 h1 {
@@ -17,7 +15,7 @@ h1 {
 .grid-game {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin: 1rem auto 1rem auto;
+  margin: 1rem auto;
 }
 
 .grid-game div {
@@ -39,23 +37,20 @@ h1 {
   border-right: none;
 }
 
-.grid-game div.x {
-  background-image: url("../img/iconX.svg");
-  background-repeat: no-repeat;
-  background-size: 70%;
-  background-position: center;
-  cursor: pointer;
-}
-
 .grid-game div.circle {
   background-image: url("../img/circle.svg");
+}
+
+.grid-game div.x {
+  background-image: url("../img/iconX.svg");
+}
+
+.grid-game div.circle,
+.grid-game div.x {
   background-repeat: no-repeat;
   background-size: 70%;
   background-position: center;
-  cursor: pointer;
 }
-
-/* Alerta de Resultado */
 
 .modal-container {
   height: 100vh;
@@ -97,7 +92,6 @@ button {
   border-radius: 4px;
   font-size: 1.25rem;
   font-family: Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
   cursor: pointer;
 }
 

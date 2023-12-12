@@ -21,9 +21,7 @@ const handleClick = (e) => {
   circleOrX(element, classRespective);
 
   checkWin();
-  checkDraw();
   changePlayer();
-  // circleTrue = !circleTrue;
 };
 
 function changePlayer() {
@@ -46,8 +44,8 @@ function checkWin() {
     [2, 4, 6],
   ];
 
-  possibleWinnings.forEach((event) => {
-    const [a, b, c] = event;
+  for (let i = 0; i < possibleWinnings.length; i++) {
+    const [a, b, c] = possibleWinnings[i];
     if (
       squares[a].className == squares[b].className &&
       squares[a].className == squares[c].className &&
@@ -55,8 +53,10 @@ function checkWin() {
     ) {
       containerModal.classList.add("ativo");
       resultAlert.innerText = `${squares[a].className} won!!`;
+      break;
     }
-  });
+    checkDraw();
+  }
 }
 
 function checkDraw() {
@@ -73,7 +73,6 @@ function checkDraw() {
 
 function initModal() {
   if (botaoPlayAgain && containerModal) {
-    event.preventDefault();
     containerModal.classList.remove("ativo");
 
     squares.forEach((square) => {
